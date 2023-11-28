@@ -1,11 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import LoginButton from "./components/login";
-import LogoutButton from "./components/logout";
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
-import { useNavigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
 
 const clientId = "480801324706-b4fjshrfrfom25j91fo4edl1aomkepsk.apps.googleusercontent.com"
 
@@ -22,7 +18,7 @@ function App() {
   
   return (
     <div className="App">
-      <div class="gologin" className="App">
+      <div className="gologin">
       <LoginButton />
       </div>
     </div>
