@@ -48,4 +48,16 @@ code {
   z-index: 1;
   transform: scale(1.08);
   border: 4px solid black;
+  opacity: 60%;
+}
+
+.wall {
+  width: 75%;
+  height:751px;
+  background-color: rgb(37, 33, 33);
+  z-index:1;
+  left: 15%;
+  position: absolute;
+  border-radius: 20px;
+
 }

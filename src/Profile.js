@@ -18,10 +18,11 @@ function Profile() {
 
   return (
     <div className='App'>
-     <Navbar></Navbar>
+    <Navbar></Navbar>
       <div className="gologout">
         <LogoutButton />
       </div>
+      <div className='wall'></div>
     </div>
   )
 }

@@ -22,6 +22,7 @@ function Home() {
       <div className="gologout">
         <LogoutButton />
       </div>
+      <div className='wall'></div>
     </div>
   )
 }

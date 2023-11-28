@@ -8,8 +8,8 @@
 }
 
 .gologout {
-  left:82%;
-  top: 1%;
+  left:80.5%;
+  top: 0.75%;
   position: absolute;
   z-index: 1;
 }
@@ -43,4 +43,14 @@
 img {
   width: 50px;
   height: 50px;
+}
+
+.profile-icon img {
+  border-radius: 50%;
+  transform: scale(.92);
+}
+
+.home-icon {
+  transform: scale(1.25);
+
 }
