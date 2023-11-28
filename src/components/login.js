@@ -6,6 +6,7 @@ function Login() {
     
     const onSuccess = (res) => {
         console.log("LOGIN SUCCESFUL! Current user: ", res.profileObj);
+        window.location='/Home';
     }
 
     const onFailure = (res) => {

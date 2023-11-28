@@ -21,8 +21,8 @@ code {
 .loginbox {
   border-radius: 35px;
   display: flex;
-  background-color: whitesmoke;
-  color: black;
+  background-color: rgb(45, 37, 37);
+  color: black; 
   font-family: Akkurat;
   padding: 20px 20px 20px 20px;
   border: 4px solid rgb(0, 0, 0);
@@ -47,4 +47,5 @@ code {
   display: flex;
   z-index: 1;
   transform: scale(1.08);
+  border: 4px solid black;
 }

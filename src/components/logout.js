@@ -6,6 +6,7 @@ function Logout() {
     
     const onSuccess = () => {
         console.log("Logout succesful ");
+        window.location='/';
     }
     
     return(
