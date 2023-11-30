@@ -18,39 +18,6 @@ code {
     monospace;
 }
 
-.loginbox {
-  border-radius: 35px;
-  display: flex;
-  background-color: rgb(45, 37, 37);
-  color: black; 
-  font-family: Akkurat;
-  padding: 20px 20px 20px 20px;
-  border: 4px solid rgb(0, 0, 0);
-  height: 600px;
-  width: 1000px;
-  position: absolute;
-  margin: auto;
-  top:10%;
-  left: 15%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.innerloginbox {
-  position:relative;
-  background-image: url('/public/loginstock.jpeg');
-  max-height: 100%;
-  max-width: 100%;
-  width:50%;
-  left:50%;
-  background-size: cover;
-  display: flex;
-  z-index: 1;
-  transform: scale(1.08);
-  border: 4px solid black;
-  opacity: 60%;
-}
-
 .wall {
   width: 75%;
   height:751px;

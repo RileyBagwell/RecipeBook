@@ -18,9 +18,9 @@ function App() {
   
   return (
     <div className="App">
-      <div className="gologin">
-      <LoginButton />
-      </div>
+      <div className="gologin"><LoginButton /></div>
+      <div className="loginbox">
+      <div className="innerloginbox"></div></div>
     </div>
   );
 }
