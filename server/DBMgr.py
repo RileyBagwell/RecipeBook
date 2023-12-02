@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 import os
 from google.cloud import storage
 import sqlite3
@@ -6,7 +7,6 @@ import mysql.connector
 from mysql.connector import errorcode
 from mysql.connector.constants import ClientFlag
 import sys
-import random
 
 # Profile ("userID"	TEXT, "screenname"	TEXT, "profilePicture"	TEXT, "followerList"	BLOB, "followingList"	BLOB, "postList"	BLOB)
 # User ("username"	TEXT, "userID"	TEXT, "OAUTHTOKEN"	TEXT)
@@ -28,3 +28,20 @@ config = {
 }
 
 class Cloud_Server:
+  # returns all user data
+  def get_user_info(self, user_ID):
+    # connecting to database
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('SELECT username, userID, OAUTHTOKEN FROM User WHERE user_ID = '+str(user_ID))
+    return cursor.fetchone()
+  
+  # returns all profile data
+  def get_profile_info(self, user_ID):
+    # connecting to database
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('SELECT userID, screenname, profilePicture, followerList, followingList, postList FROM Profile WHERE user_ID = '+str(user_ID))
+    return cursor.fetchone()
