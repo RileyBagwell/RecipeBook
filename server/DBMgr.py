@@ -68,7 +68,7 @@ class Cloud_Server:
     return cursor.fetchone()
   
    # creates new profile
-  def create_user(self, user_ID, screenname, profilePicture):
+  def create_profile(self, user_ID, screenname, profilePicture):
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
