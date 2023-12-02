@@ -38,6 +38,14 @@ class Cloud_Server:
     cursor.execute('SELECT username, userID, OAUTHTOKEN FROM User WHERE user_ID = '+str(user_ID))
     return cursor.fetchone()
   
+  def get_user_info_TOKEN(self, OAUTHTOKEN):
+    # connecting to database
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('SELECT username, userID, OAUTHTOKEN FROM User WHERE OAUTHTOKEN = '+str(OAUTHTOKEN))
+    return cursor.fetchone()
+  
   # creates new user
   def create_user(self, username, OAUTHTOKEN):
     cnx = mysql.connector.connect(**config)
