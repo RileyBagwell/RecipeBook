@@ -85,6 +85,18 @@ class Cloud_Server:
     cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
     return cursor.fetchone()
   
+  # creates new Post
+  def create_post(self, user_ID, post_title, post_image, post_text):
+    cnx = mysql.connector.connect(**config)
+    cur = cnx.cursor()
+    cur.execute('USE recipe_book_info')
+    cur.execute('SELECT COUNT(*) FROM Post')
+    count = cur.fetchone()
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('INSERT INTO Post (postID, postTitle, postImage, postText, userID, reviewList) VALUES ("'+str(count)+'", "'+post_title+'", '+post_image+'", '+post_text+'", '+ user_ID+'", "")')
+    cnx.commit()
+  
   #gets 10 latest posts, add a buffer for earlier posts
   def get_ten_posts(self, buffer):
     cnx = mysql.connector.connect(**config)
