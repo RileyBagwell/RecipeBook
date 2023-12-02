@@ -66,6 +66,15 @@ class Cloud_Server:
     cursor.execute('USE recipe_book_info')
     cursor.execute('SELECT userID, screenname, profilePicture, followerList, followingList, postList FROM Profile WHERE user_ID = '+str(user_ID))
     return cursor.fetchone()
+  
+   # creates new profile
+  def create_user(self, user_ID, screenname, profilePicture):
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('INSERT INTO Profile (userID, screenname, profilePicture, followerList, followingList, postList) VALUES ("'+user_ID+'", "'+screenname+'", '+profilePicture+', "", "", "")')
+    cnx.commit()
+
   # Post ("postID"	TEXT, "postTitle"	TEXT, "postImage"	TEXT, "postText"	BLOB, "userID"	INTEGER, "reviewList"	BLOB)
 
   def get_post_infoID(self, post_ID):
