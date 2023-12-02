@@ -38,6 +38,7 @@ class Cloud_Server:
     cursor.execute('SELECT username, userID, OAUTHTOKEN FROM User WHERE user_ID = '+str(user_ID))
     return cursor.fetchone()
   
+  # creates new user
   def create_user(self, username, OAUTHTOKEN):
     cnx = mysql.connector.connect(**config)
     cur = cnx.cursor()
@@ -48,7 +49,6 @@ class Cloud_Server:
     cursor.execute('USE recipe_book_info')
     cursor.execute('INSERT INTO User (username, userID, OAUTHTOKEN) VALUES ("'+username+'", "'+str(count)+'", '+OAUTHTOKEN+')')
     cnx.commit()
-    
 
   # returns all profile data
   def get_profile_info(self, user_ID):
@@ -58,5 +58,32 @@ class Cloud_Server:
     cursor.execute('USE recipe_book_info')
     cursor.execute('SELECT userID, screenname, profilePicture, followerList, followingList, postList FROM Profile WHERE user_ID = '+str(user_ID))
     return cursor.fetchone()
+  # Post ("postID"	TEXT, "postTitle"	TEXT, "postImage"	TEXT, "postText"	BLOB, "userID"	INTEGER, "reviewList"	BLOB)
+
+  def get_post_infoID(self, post_ID):
+    # connecting to database
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute('USE recipe_book_info')
+    cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
+    return cursor.fetchone()
   
-  
+  #gets 10 latest posts, add a buffer for earlier posts
+  def get_ten_posts(self, buffer):
+    cnx = mysql.connector.connect(**config)
+    count_cursor = cnx.cursor()
+    count_cursor.execute('USE scholar_data') 
+    count_cursor.execute('SELECT COUNT(*) FROM questions')
+    count = count_cursor.fetchone()
+    count = count - buffer
+    if count < 1:
+      return -1
+    post_list = []
+    for post_ID in range(count - 10, count + 1):
+      if(post_ID < 0):
+        break
+      cursor = cnx.cursor()
+      cursor.execute('USE scholar_data') 
+      cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
+      post_list.append(cursor.fetchone())
+    return post_list
