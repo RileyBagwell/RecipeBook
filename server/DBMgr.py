@@ -55,7 +55,7 @@ class Cloud_Server:
     count = cur.fetchone()
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
-    cursor.execute('INSERT INTO User (username, userID, OAUTHTOKEN) VALUES ("'+str(username)+'", "'+str(count)+'", '+str(OAUTHTOKEN)+')')
+    cursor.execute('INSERT INTO User (username, userID, OAUTHTOKEN) VALUES ("'+str(username)+'", "'+str(count)+'", "'+str(OAUTHTOKEN)+'")')
     cnx.commit()
 
   # returns all profile data
@@ -72,7 +72,7 @@ class Cloud_Server:
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
-    cursor.execute('INSERT INTO Profile (userID, screenname, profilePicture, followerList, followingList, postList) VALUES ("'+str(user_ID)+'", "'+str(screenname)+'", '+str(profilePicture)+', "", "", "")')
+    cursor.execute('INSERT INTO Profile (userID, screenname, profilePicture, followerList, followingList, postList) VALUES ("'+str(user_ID)+'", "'+str(screenname)+'", "'+str(profilePicture)+'", "", "", "")')
     cnx.commit()
 
   # Post ("postID"	TEXT, "postTitle"	TEXT, "postImage"	TEXT, "postText"	BLOB, "userID"	INTEGER, "reviewList"	BLOB)
@@ -94,7 +94,7 @@ class Cloud_Server:
     count = cur.fetchone()
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
-    cursor.execute('INSERT INTO Post (postID, postTitle, postImage, postText, userID, reviewList) VALUES ("'+str(count)+'", "'+str(post_title)+'", '+str(post_image)+'", '+str(post_text)+'", '+ str(user_ID)+'", "")')
+    cursor.execute('INSERT INTO Post (postID, postTitle, postImage, postText, userID, reviewList) VALUES ("'+str(count)+'", "'+str(post_title)+'", "'+str(post_image)+'", "'+str(post_text)+'", "'+ str(user_ID)+'", "")')
     cnx.commit()
   
   #gets 10 latest posts, add a buffer for earlier posts
