@@ -92,6 +92,7 @@ class Cloud_Server:
     cur.execute('USE recipe_book_info')
     cur.execute('SELECT COUNT(*) FROM Post')
     count = cur.fetchone()
+    print(str(count))
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
     cursor.execute('INSERT INTO Post (postID, postTitle, postImage, postText, userID, reviewList) VALUES ("'+str(count)+'", "'+str(post_title)+'", "'+str(post_image)+'", "'+str(post_text)+'", "'+ str(user_ID)+'", "")')
