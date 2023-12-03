@@ -82,7 +82,7 @@ class Cloud_Server:
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
-    cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
+    cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM Post WHERE postID = '+str(post_ID))
     return cursor.fetchone()
   
   # creates new Post
@@ -102,7 +102,7 @@ class Cloud_Server:
   def get_ten_posts(self, buffer):
     cnx = mysql.connector.connect(**config)
     count_cursor = cnx.cursor()
-    count_cursor.execute('USE scholar_data') 
+    count_cursor.execute('USE recipe_book_info') 
     count_cursor.execute('SELECT COUNT(*) FROM questions')
     count = count_cursor.fetchone()
     count = count - buffer
@@ -113,7 +113,7 @@ class Cloud_Server:
       if(post_ID < 0):
         break
       cursor = cnx.cursor()
-      cursor.execute('USE scholar_data') 
+      cursor.execute('USE recipe_book_info') 
       cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
       post_list.append(cursor.fetchone())
     return post_list
