@@ -109,7 +109,7 @@ class Cloud_Server:
     if count < 1:
       return -1
     post_list = []
-    for post_ID in range(count - 10, count + 1):
+    for post_ID in range(count - 10, count):
       if(post_ID < 0):
         break
       cursor = cnx.cursor()
