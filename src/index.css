@@ -19,12 +19,11 @@ code {
 }
 
 .wall {
-  width: 75%;
+  width: 79%;
   height:751px;
   background-color: rgb(37, 33, 33);
   z-index:1;
-  left: 15%;
+  left: 13%;
   position: absolute;
   border-radius: 20px;
-
 }

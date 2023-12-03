@@ -18,7 +18,7 @@ function Navbar() {
         <li>
           <Link to="/profile">
             <div className='profile-icon'>
-              <img alt='icon' src='defaultprofile.png'/>
+              <img alt='icon' src='chef.jpeg'/>
             </div>
           </Link>
         </li>

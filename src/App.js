@@ -9,12 +9,20 @@ const clientId = "480801324706-b4fjshrfrfom25j91fo4edl1aomkepsk.apps.googleuserc
 function App() {
   
   useEffect(() => {
-    function start() {
-      gapi.client.init({clientId:clientId, scope: ""})
-  };
-  
-    gapi.load('client:auth2', start);
-});
+  function start() {
+    gapi.client.init({
+      clientId: clientId,
+      scope: "", // Update with the necessary scope
+    }).then(() => {
+      console.log('Google API initialized successfully');
+    }).catch((error) => {
+      console.error('Error initializing Google API:', error);
+    });
+  }
+
+  gapi.load('client:auth2', start);
+}, []);
+
   
   return (
     <div className="App">
