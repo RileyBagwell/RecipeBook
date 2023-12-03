@@ -82,7 +82,7 @@ class Cloud_Server:
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     cursor.execute('USE recipe_book_info')
-    cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM Post WHERE postID = '+str(post_ID))
+    cursor.execute('SELECT postID, postTitle, userID, postImage, postText, userID, reviewList FROM Post WHERE postID = '+str(post_ID))
     return cursor.fetchone()
   
   # creates new Post
@@ -114,6 +114,6 @@ class Cloud_Server:
         break
       cursor = cnx.cursor()
       cursor.execute('USE recipe_book_info') 
-      cursor.execute('SELECT postID, postTitle, user_ID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
+      cursor.execute('SELECT postID, postTitle, userID, postImage, postText, userID, reviewList FROM account_information WHERE postID = '+str(post_ID))
       post_list.append(cursor.fetchone())
     return post_list
